@@ -17,7 +17,19 @@ export default StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     borderBottomWidth: 2,
-    borderBottomColor: "#0e806a"
+    borderBottomColor: '#0e806a',
+  },
+
+  containerDetailStatus: {
+    paddingHorizontal: 22.5,
+    // paddingVertical: 12,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    // alignItems: "center",
+    width: '100%',
+    alignItems: 'center',
+    // borderBottomWidth: 2,
+    // borderBottomColor: "#0e806a"
   },
   wrapperDetail: {
     justifyContent: 'space-between',
@@ -50,12 +62,12 @@ export default StyleSheet.create({
 
   icons: {
     flex: 1,
-    height: "30%",
+    height: '30%',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: "center",
+    justifyContent: 'center',
     marginTop: 20,
-    gap: 16
+    gap: 16,
   },
 
   backButton: {
@@ -78,6 +90,26 @@ export default StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     // paddingBottom: 40,
-    paddingTop: 40
+    paddingTop: 40,
+  },
+
+  progressbar: {
+    height: 8,
+    width: '100%',
+    backgroundColor: 'gray',
+    borderColor: '#000',
+    borderWidth: 2,
+    marginBottom: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  absoluteFill: {
+    position: 'absolute',
+    // top: 0
+
+    height: 2,
+    width: '100%',
+    backgroundColor: "#fff"
   },
 });

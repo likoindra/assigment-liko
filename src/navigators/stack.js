@@ -10,6 +10,8 @@ import styles from './styles';
 import Homepage from '@Organism/Homepage';
 import ChatScreen from '@Organism/Chat';
 import ChatDetail from '@Organism/ChatDetail';
+import DetailStatus from '@Organism/DetailStatus';
+
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
@@ -22,6 +24,7 @@ const StackNavigator = () => {
       <Stack.Screen name="main-navigator" component={Homepage} />
       <Stack.Screen name="chat-screen" component={ChatScreen} />
       <Stack.Screen name="detail-chat-screen" component={ChatDetail} />
+      <Stack.Screen name="detail-status-screen" component={DetailStatus} />
     </Stack.Navigator>
   );
 };

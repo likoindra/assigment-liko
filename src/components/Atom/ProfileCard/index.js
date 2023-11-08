@@ -1,4 +1,10 @@
-import {View, Image, Touchable, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Image,
+  Touchable,
+  TouchableOpacity,
+  Pressable,
+} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import moment from 'moment';
@@ -37,7 +43,11 @@ const ProfileCard = props => {
 
   if (props.updates) {
     return (
-      <View style={styles.containerUpdates}>
+      <Pressable
+        style={styles.containerUpdates}
+        onPress={() =>
+          navigation.navigate('detail-status-screen', {props: data})
+        }>
         <Image source={data?.photo} style={styles.imagesUpdate} />
         <View style={styles.content}>
           <View style={styles.header}>
@@ -56,7 +66,7 @@ const ProfileCard = props => {
             </Text>
           </View>
         </View>
-      </View>
+      </Pressable>
     );
   }
   return (

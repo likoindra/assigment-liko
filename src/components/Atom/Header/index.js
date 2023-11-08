@@ -5,8 +5,9 @@ import {
   Pressable,
   Touchable,
   Image,
+  Animated,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import Images from '@Theme/Images';
@@ -22,8 +23,20 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import VideoIcon from '@Assets/Svg/VideoSvg';
 
-const Header = ({backable, homepage, name, detail, data, color, info}) => {
+const Header = ({
+  backable,
+  homepage,
+  name,
+  detail,
+  data,
+  color,
+  info,
+  detailStatus,
+  progressAnim,
+}) => {
   const navigate = useNavigation();
+
+  // console.log(detailStatus, 'header');
 
   if (homepage) {
     return (
@@ -91,6 +104,47 @@ const Header = ({backable, homepage, name, detail, data, color, info}) => {
               </Text>
             </View>
           </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (detailStatus) {
+    return (
+      <SafeAreaView>
+        <View style={styles.progressbar}>
+          <Animated.View
+            style={[
+              styles.absoluteFill,
+              {
+                width: progressAnim.interpolate({
+                  inputRange: [0, 100],
+                  outputRange: ['0%', '100%'],
+                }),
+              },
+            ]}
+          />
+        </View>
+        <View style={styles.containerDetailStatus}>
+          {backable && (
+            <Pressable
+              style={styles.backButton}
+              onPress={() => navigate.goBack()}>
+              <ArrowIcon color={color} />
+            </Pressable>
+          )}
+
+          <TouchableOpacity
+            onPress={() =>
+              navigate.navigate('detail-chat-screen', {props: data})
+            }>
+            <View style={{paddingLeft: 120, paddingRight: 120}}>
+              <Text size={20} variant="sbold" color="#fff">
+                {data?.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <EllipsisIcon />
         </View>
       </SafeAreaView>
     );
